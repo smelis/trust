@@ -1,6 +1,7 @@
 import os
 import json
 from post_comment_indicator import PostAnalysis
+from dotenv import load_dotenv
 
 
 def load_analysis_from_file(filename):
@@ -37,4 +38,5 @@ def count(path):
     print(comments_total)
 
 
-count(path='D:\\data\\tilburguniversity\\inge\\trust')
+load_dotenv('.env')
+count(path=os.getenv("JSON_OUTPUT_DIR"))

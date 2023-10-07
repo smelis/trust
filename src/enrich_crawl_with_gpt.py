@@ -6,8 +6,10 @@ import time
 from post_comment_indicator import PostAnalysis, CommentAnalysis, TrustIndicator
 import openai
 from openai.error import Timeout, APIError
+from dotenv import load_dotenv
 
-openai.api_key = "env"
+load_dotenv('.env')
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def get_chat_completion(system_prompt, prompt, temp=0.5, model="gpt-3.5-turbo"):

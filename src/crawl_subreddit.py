@@ -65,8 +65,8 @@ def save_analysis_to_file(posts_analysis, filename):
 def fetch_and_categorize_subreddit(subreddit_name: str, path, after_id=None):
     # Configure Reddit API client
     reddit = praw.Reddit(
-        client_id="env",
-        client_secret="env",
+        client_id=os.getenv("REDDIT_CLIENT_ID"),
+        client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
         user_agent="test-trust",
     )
 
@@ -127,7 +127,9 @@ def fetch_and_categorize_subreddit(subreddit_name: str, path, after_id=None):
     return posts_analysis
 
 
-trust_path = 'D:\\data\\tilburguniversity\\inge\\trust'
+load_dotenv('.env')
+
+trust_path = os.getenv("JSON_OUTPUT_DIR")
 last_saved_fullname = get_last_saved_post_fullname(trust_path)
 
 analysis = fetch_and_categorize_subreddit(

@@ -1,5 +1,6 @@
 import json
 import os
+from dotenv import load_dotenv
 
 
 def combine_files_into_array(path):
@@ -32,4 +33,5 @@ def get_processed_files(path):
 
 
 if __name__ == "__main__":
-    combine_files_into_array(path='D:/data/tilburguniversity/inge/trust')
+    load_dotenv('.env')
+    combine_files_into_array(path=os.getenv("JSON_OUTPUT_DIR"))
